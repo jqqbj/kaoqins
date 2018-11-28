@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @TableName("sys_dict")
-public class SysDict extends BaseModel {
+public class SysDict extends BaseModel<SysDict> {
 
     /**
      * 类型

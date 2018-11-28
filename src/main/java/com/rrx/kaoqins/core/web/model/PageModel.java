@@ -15,10 +15,14 @@ public class PageModel<T>{
     private String asc;
     private String desc;
 
+    /**
+     * 封装Page类
+     */
     public IPage<T> getPage(){
         IPage page = new Page<>(this.getCurrent(),this.getSize());
         ((Page) page).setAsc(this.getAsc());
         ((Page) page).setDesc(this.getDesc());
         return page;
     }
+
 }

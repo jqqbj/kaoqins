@@ -17,7 +17,7 @@ import java.util.Date;
 
 @Slf4j
 @Component
-public class QuartzSendMessage {
+public class SendMsgTask {
     @Autowired
     SysDictService sysDictService;
 

@@ -46,6 +46,14 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
         return super.getById(id);
     }
 
+
+    //AR模式
+    public SysDict getById2(Serializable id) {
+        SysDict dict = new  SysDict();
+        dict.setId((Long)id);
+        return dict.selectById();
+    }
+
     public IPage page(DictParam dictParam) {
         return super.page(dictParam.getPage(),
                new QueryWrapper<SysDict>().eq("code",dictParam.getCode()));

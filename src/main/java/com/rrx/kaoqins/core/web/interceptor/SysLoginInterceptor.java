@@ -21,11 +21,10 @@ public class SysLoginInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
-        System.out.println("getContextPath:" + request.getContextPath());
-        System.out.println("getServletPath:" + request.getServletPath());
-        System.out.println("getRequestURI:" + request.getRequestURI());
-        System.out.println("getRequestURL:" + request.getRequestURL());
-        System.out.println("getRealPath:" + request.getSession().getServletContext().getRealPath("image"));
+        log.debug("getContextPath:" + request.getContextPath());
+        log.debug("getServletPath:" + request.getServletPath());
+        log.debug("getRequestURI:" + request.getRequestURI());
+        log.debug("getRequestURL:" + request.getRequestURL());
         if(StrUtil.isBlank(request.getParameter("token"))){
             log.error("登录失败");
             //throw new LoginException("登录失败");

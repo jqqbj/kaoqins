@@ -1,6 +1,7 @@
 package com.rrx.kaoqins.core.base;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -10,10 +11,10 @@ import java.util.Date;
 
 /**
  * 数据模型基类
+ * 如果不使用AR模式，无须继承Model接口
  */
 @Data
-public class BaseModel implements Serializable {
-
+public class BaseModel<T extends Model> extends Model<T> implements Serializable {
     /**
      * 主键
      */
@@ -50,4 +51,12 @@ public class BaseModel implements Serializable {
     private Integer isDel;
 
 
+    /**
+     * 实现AR模式
+     * @return
+     */
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
 }
