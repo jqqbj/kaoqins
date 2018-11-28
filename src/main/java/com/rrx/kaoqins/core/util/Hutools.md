@@ -19,3 +19,4 @@ hutool-json JSON实现
 hutool-captcha 图片验证码实现  
 hutool-poi 针对POI中Excel的封装  
 可以根据需求对每个模块单独引入，也可以通过引入hutool-all方式引入所有模块。  
+
