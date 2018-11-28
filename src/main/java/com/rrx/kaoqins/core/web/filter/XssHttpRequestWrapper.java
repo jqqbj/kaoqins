@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
  */
 public class XssHttpRequestWrapper extends HttpServletRequestWrapper {
 
-
     private static Pattern scriptPattern_between = Pattern.compile("<script>(.*?)</script>", Pattern.CASE_INSENSITIVE);
     private static Pattern scriptPattern_src = Pattern.compile("src[\r\n]*=[\r\n]*\\\'(.*?)\\\'", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
     private static Pattern scriptPattern_src_2 = Pattern.compile("src[\r\n]*=[\r\n]*\\\"(.*?)\\\"", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
