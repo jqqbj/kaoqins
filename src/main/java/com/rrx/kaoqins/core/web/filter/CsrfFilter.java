@@ -14,9 +14,6 @@ import java.util.List;
 
 /**
  * CSRF过滤器
- *
- * @author wanyong
- * @date 2017/12/03 15:00
  */
 @Slf4j
 public class CsrfFilter implements Filter {
