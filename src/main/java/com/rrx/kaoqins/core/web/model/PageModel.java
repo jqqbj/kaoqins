@@ -9,7 +9,7 @@ import lombok.Data;
  * 分页实体类
  */
 @Data
-public class PageModel<T>{
+public class PageModel{
     private int current;
     private int size;
     private String asc;
@@ -18,8 +18,8 @@ public class PageModel<T>{
     /**
      * 封装Page类
      */
-    public Page<T> getPage(){
-        Page page = new Page<>(this.getCurrent(),this.getSize());
+    public Page getPage(){
+        Page page = new Page(this.getCurrent(),this.getSize());
         if(StrUtil.isNotBlank(this.getAsc())){
             page.setAsc(this.getAsc());
         }

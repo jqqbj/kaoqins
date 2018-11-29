@@ -2,6 +2,7 @@ package com.rrx.kaoqins;
 
 import com.rrx.kaoqins.admin.dao.SysDictMapper;
 import com.rrx.kaoqins.admin.model.SysDict;
+import com.rrx.kaoqins.admin.service.SysDictService;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ import java.util.List;
 public class MybatisTest {
 
     @Autowired
-    private SysDictMapper sysDictMapper;
+    SysDictMapper sysDictMapper;
 
     @Test
     public void testSelect() {
@@ -31,6 +32,16 @@ public class MybatisTest {
         userList.forEach(System.out::println);
     }
 
+
+    @Autowired
+    SysDictService sysDictService;
+
+    @Test
+    public void shardQuery() {
+        sysDictService.shardQuery(null);
+    }
+
+
     @Autowired
     StringEncryptor stringEncryptor;
 
@@ -39,5 +50,8 @@ public class MybatisTest {
         String result = stringEncryptor.encrypt("root");
         System.out.println(result);
     }
+
+
+
 
 }

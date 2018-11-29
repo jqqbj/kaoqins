@@ -8,13 +8,14 @@ import com.rrx.kaoqins.admin.dto.SysDictDto;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.param.DictParam;
 import com.rrx.kaoqins.admin.service.SysDictService;
-import com.rrx.kaoqins.core.exception.BusinessException;
 import com.rrx.kaoqins.core.web.model.ResultModel;
 import com.rrx.kaoqins.core.web.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/dict")
@@ -98,6 +99,15 @@ public class DictController {
     public ResultModel redis(String id){
         sysDictService.redis(id);
         return ResultUtil.ok();
+    }
+
+    /**
+     * 测试分布式session
+     */
+    @GetMapping("/session")
+    public ResultModel session(HttpSession session){
+        session.setAttribute("loginname",UUID.randomUUID());
+        return ResultUtil.ok(session.getId());
     }
 
 }
