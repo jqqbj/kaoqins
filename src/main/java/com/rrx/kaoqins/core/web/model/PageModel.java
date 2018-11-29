@@ -1,7 +1,6 @@
 package com.rrx.kaoqins.core.web.model;
 
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
@@ -18,10 +17,10 @@ public class PageModel<T>{
     /**
      * 封装Page类
      */
-    public IPage<T> getPage(){
-        IPage page = new Page<>(this.getCurrent(),this.getSize());
-        ((Page) page).setAsc(this.getAsc());
-        ((Page) page).setDesc(this.getDesc());
+    public Page<T> getPage(){
+        Page page = new Page<>(this.getCurrent(),this.getSize());
+        //page.setAsc(this.getAsc());
+        //page.setDesc(this.getDesc());
         return page;
     }
 

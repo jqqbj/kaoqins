@@ -28,4 +28,18 @@
        select <include refid="Base_Column_List"/> from sys_dict
     </select>
 
+    <select id="pageXML" resultType="com.rrx.kaoqins.admin.model.SysDict">
+        select <include refid="Base_Column_List" />
+        from sys_dict
+        <where>
+            is_del=0
+            <if test="dictParam.code != null">
+               and code = #{dictParam.code}
+            </if>
+            <if test="dictParam.code != null">
+               and code = #{dictParam.code}
+            </if>
+        </where>
+    </select>
+
 </mapper>

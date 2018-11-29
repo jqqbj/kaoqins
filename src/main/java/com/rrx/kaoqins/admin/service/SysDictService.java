@@ -4,6 +4,7 @@ package com.rrx.kaoqins.admin.service;
 import cn.hutool.core.lang.Dict;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.rrx.kaoqins.admin.dao.SysDict2Mapper;
 import com.rrx.kaoqins.admin.dao.SysDictMapper;
@@ -18,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,18 +46,22 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
         return super.getById(id);
     }
 
-
-    //AR模式
+    //AR方式
     public SysDict getById2(Serializable id) {
         SysDict dict = new  SysDict();
         dict.setId((Long)id);
         return dict.selectById();
     }
 
+
     public IPage page(DictParam dictParam) {
-        return super.page(dictParam.getPage(),
-               new QueryWrapper<SysDict>().eq("code",dictParam.getCode()));
+        //XML方式
+        return sysDictMapper.pageXML((Page) dictParam.getPage(),dictParam);
+        //Wrapper方式
+//        return super.page(dictParam.getPage(),
+//               new QueryWrapper<SysDict>().eq("code",dictParam.getCode()));
     }
+
 
     public List<SysDict> list(DictParam dictParam) {
         return super.list(new QueryWrapper<SysDict>().eq("code",dictParam.getCode()));
