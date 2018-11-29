@@ -114,13 +114,12 @@ public class DictController {
     }
 
     /*
-     * ZK 分布式锁
+     * ZK 分布式锁 ，也可以采用Redis锁，RedisHelper.lock()
      */
     @Autowired
     DistributedLockByCurator distributedLockByCurator;
 
     String path ="SYNC_KAOQIN_DB";
-
 
     @GetMapping("/acquireLock")
     public ResultModel acquireLock(){
@@ -138,5 +137,7 @@ public class DictController {
         log.debug("del-ZK'{}'目录是否存在{}",path,distributedLockByCurator.checkLock(path));
         return ResultUtil.ok();
     }
+
+
 
 }

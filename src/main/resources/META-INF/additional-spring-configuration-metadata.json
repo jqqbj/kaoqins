@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "　localPath",
+      "type": "java.lang.String",
+      "description": "Description for 　localPath."
+    },
+    {
+      "name": "zk",
+      "type": "java.lang.String",
+      "description": "Description for zk."
+    },
+    {
+      "name": "　timeout",
+      "type": "java.lang.String",
+      "description": "Description for 　timeout."
+    },
+    {
+      "name": "　url",
+      "type": "java.lang.String",
+      "description": "Description for 　url."
+    }
+  ] }
