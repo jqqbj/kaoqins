@@ -1,6 +1,7 @@
 package com.rrx.kaoqins.core.web.model;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
@@ -19,8 +20,12 @@ public class PageModel<T>{
      */
     public Page<T> getPage(){
         Page page = new Page<>(this.getCurrent(),this.getSize());
-        //page.setAsc(this.getAsc());
-        //page.setDesc(this.getDesc());
+        if(StrUtil.isNotBlank(this.getAsc())){
+            page.setAsc(this.getAsc());
+        }
+        if(StrUtil.isNotBlank(this.getDesc())){
+            page.setDesc(this.getDesc());
+        }
         return page;
     }
 
