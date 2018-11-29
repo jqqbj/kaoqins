@@ -53,3 +53,10 @@ jasypt:
   encryptor:
     password: ${jssyptpwd}
 
+curator:
+    connectString: 127.0.0.1:2181  # zookeeper地址
+    connectionTimeoutMs: 5000 # 连接超时时间
+    elapsedTimeMs: 5000 #重试间隔时间
+    retryCount: 5  #重试次数
+    sessionTimeoutMs: 60000 # session超时时间
+

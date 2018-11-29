@@ -25,7 +25,7 @@ public final class Const {
     /**
      * 缓存命名空间前缀
      */
-    public static final String CACHE_NAMESPACE_PREFIX = "jdb:";
+    public static final String CACHE_NAMESPACE_PREFIX = "rrx:";
 
     /**
      * 模块缓存名
