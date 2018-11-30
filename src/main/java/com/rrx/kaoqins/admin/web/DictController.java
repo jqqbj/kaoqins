@@ -114,7 +114,8 @@ public class DictController {
     }
 
     /*
-     * ZK 分布式锁 ，也可以采用Redis锁，RedisHelper.lock()
+     * ZK分布式锁 ，也可以采用Redis锁，RedisHelper.lock，
+     * 使用场景，如：多台机器执行定时任务，争抢资源
      */
     @Autowired
     DistributedLockByCurator distributedLockByCurator;
@@ -139,5 +140,8 @@ public class DictController {
     }
 
 
+    /**
+     * 资源监控
+     */
 
 }
