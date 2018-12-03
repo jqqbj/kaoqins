@@ -21,12 +21,12 @@ import java.util.Map;
 import java.util.Properties;
 
 @Configuration
-public class ShardingDataSourceConfig implements DynamicDataSourceProvider {
+public class ShardingJdbcConfig implements DynamicDataSourceProvider {
         private static final Logger log = LoggerFactory.getLogger(com.baomidou.dynamic.datasource.provider.YmlDynamicDataSourceProvider.class);
         private DynamicDataSourceProperties properties;
         private DynamicDataSourceCreator dynamicDataSourceCreator;
 
-        public ShardingDataSourceConfig(DynamicDataSourceProperties properties, DynamicDataSourceCreator dynamicDataSourceCreator) {
+        public ShardingJdbcConfig(DynamicDataSourceProperties properties, DynamicDataSourceCreator dynamicDataSourceCreator) {
             this.properties = properties;
             this.dynamicDataSourceCreator = dynamicDataSourceCreator;
         }
