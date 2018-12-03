@@ -142,8 +142,12 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
     /*
      * 分表查询
      */
-    public SysLog getLog(Serializable id) {
-        return sysLogMapper.selectById(id);
+    public void queryLog() {
+        //全表查询
+        List<SysLog> list =  sysLogMapper.selectList(null);
+        list.forEach(System.out::println);
+        //单个查询
+        sysLogMapper.selectById(1);
     }
 
     /*

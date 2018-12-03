@@ -19,4 +19,11 @@ public class SysLog extends BaseModel<SysLog> {
     @TableField
     private String operation;
 
+    @Override
+    public String toString() {
+        return "SysLog{" +
+                "userName='" + userName + '\'' +
+                ", operation='" + operation + '\'' +
+                '}';
+    }
 }

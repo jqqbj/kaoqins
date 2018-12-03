@@ -146,7 +146,8 @@ public class DictController {
      */
     @GetMapping("/log/{id}")
     public ResultModel releaseLock(@PathVariable("id")String id){
-        return ResultUtil.ok(sysDictService.getLog(id));
+        sysDictService.queryLog();
+        return ResultUtil.ok();
     }
 
     /**
