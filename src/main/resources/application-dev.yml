@@ -60,3 +60,11 @@ curator:
     retryCount: 5  #重试次数
     sessionTimeoutMs: 60000 # session超时时间
 
+#sharding:
+#    jdbc:
+#        data-sources:
+#            ds_master:
+#                driver-class-name: com.mysql.jdbc.Driver
+#                jdbc-url: jdbc:mysql://localhost:3306/jww?useUnicode=true&characterEncoding=utf-8&useSSL=true
+#                password:
+#                username: root

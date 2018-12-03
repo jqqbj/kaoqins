@@ -25,7 +25,7 @@
     </sql>
 
     <select id="getAll" resultMap="BaseResultMap">
-       select <include refid="Base_Column_List"/> from sys_dict
+       select <include refid="Base_Column_List"/> from sys_dict where is_del=0
     </select>
 
     <select id="pageXML" resultType="com.rrx.kaoqins.admin.model.SysDict">

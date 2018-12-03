@@ -22,7 +22,7 @@ public class SendMsgTask {
     SysDictService sysDictService;
 
     //    每分钟启动
-    @Scheduled(cron = "0/10 * * * * ?")
+    //@Scheduled(cron = "0/10 * * * * ?")
     public void timerToNow() {
         SysDict sysDict = sysDictService.getById(1);
         log.debug("定时查询数据库：" +sysDict.toString());
