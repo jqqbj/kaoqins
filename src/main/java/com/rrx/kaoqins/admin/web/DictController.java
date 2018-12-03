@@ -140,12 +140,11 @@ public class DictController {
         return ResultUtil.ok();
     }
 
-
     /**
      * 分表查询
      */
-    @GetMapping("/log/{id}")
-    public ResultModel releaseLock(@PathVariable("id")String id){
+    @GetMapping("/log/list")
+    public ResultModel queryLog(){
         sysDictService.queryLog();
         return ResultUtil.ok();
     }
@@ -154,7 +153,7 @@ public class DictController {
      * 分表插入
      */
     @PostMapping("/log/save")
-    public ResultModel releaseLock(SysLog sysLog){
+    public ResultModel saveLog(SysLog sysLog){
         sysDictService.saveLog(sysLog);
         return ResultUtil.ok();
     }
