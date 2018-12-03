@@ -6,6 +6,7 @@ import cn.hutool.core.lang.Validator;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.rrx.kaoqins.admin.dto.SysDictDto;
 import com.rrx.kaoqins.admin.model.SysDict;
+import com.rrx.kaoqins.admin.model.SysLog;
 import com.rrx.kaoqins.admin.param.DictParam;
 import com.rrx.kaoqins.admin.service.SysDictService;
 import com.rrx.kaoqins.core.config.zk.DistributedLockByCurator;
@@ -139,6 +140,23 @@ public class DictController {
         return ResultUtil.ok();
     }
 
+
+    /**
+     * 分表查询
+     */
+    @GetMapping("/log/{id}")
+    public ResultModel releaseLock(@PathVariable("id")String id){
+        return ResultUtil.ok(sysDictService.getLog(id));
+    }
+
+    /**
+     * 分表插入
+     */
+    @PostMapping("/log/save")
+    public ResultModel releaseLock(SysLog sysLog){
+        sysDictService.saveLog(sysLog);
+        return ResultUtil.ok();
+    }
 
     /**
      * 资源监控

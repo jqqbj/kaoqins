@@ -1,4 +1,4 @@
-package com.rrx.kaoqins.core.config;
+package com.rrx.kaoqins.core.config.shardingjdbc;
 
 import com.baomidou.dynamic.datasource.DynamicDataSourceCreator;
 import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
@@ -8,10 +8,11 @@ import com.google.common.collect.Maps;
 import io.shardingjdbc.core.api.ShardingDataSourceFactory;
 import io.shardingjdbc.core.api.config.ShardingRuleConfiguration;
 import io.shardingjdbc.core.api.config.TableRuleConfiguration;
+import io.shardingjdbc.core.api.config.strategy.InlineShardingStrategyConfiguration;
+import io.shardingjdbc.core.api.config.strategy.StandardShardingStrategyConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -45,10 +46,10 @@ public class ShardingJdbcConfig implements DynamicDataSourceProvider {
                 if(pollName.equals("jww")){
                     Map<String, DataSource> shardingDataSourceMaps = Maps.newHashMap();
                     shardingDataSourceMaps.put(pollName,this.dynamicDataSourceCreator.createDataSource(dataSourceProperty));
-                    ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
-                    //shardingRuleConfig.setTableRuleConfig(getOrderTableRuleConfiguration());
                     try {
-                        dataSourceMap.put(pollName,ShardingDataSourceFactory.createDataSource(shardingDataSourceMaps,shardingRuleConfig, new HashMap<>(1), new Properties()));
+                        Properties prop = new Properties();
+                        prop.setProperty("sql.show","true");
+                        dataSourceMap.put(pollName,ShardingDataSourceFactory.createDataSource(shardingDataSourceMaps,getOrderTableRuleConfiguration(), new HashMap<>(1), prop));
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -63,19 +64,26 @@ public class ShardingJdbcConfig implements DynamicDataSourceProvider {
          * 分表策略
          * @return
          */
-        private TableRuleConfiguration getOrderTableRuleConfiguration() {
+        private ShardingRuleConfiguration getOrderTableRuleConfiguration() {
             TableRuleConfiguration rule = new TableRuleConfiguration();
-            //逻辑表名称
-            rule.setLogicTable("T_ORDER");
-            //源名 + 表名
-            rule.setActualDataNodes("ds0.T_ORDER_$->{2018..2019}_$->{['01','08','12']}");
-            // 表分片策略
-    //        StandardShardingStrategyConfiguration strategyConfiguration =
-    //                new StandardShardingStrategyConfiguration("month", new MonthTableShardingAlgorithm());
-    //        rule.setTableShardingStrategyConfig(strategyConfiguration);
-            //自增列名称
+//            rule.setLogicTable("t_order");
+//            rule.setActualDataNodes(
+//                    "t_order_0, t_order_1");
+//            // 表分片策略
+//            StandardShardingStrategyConfiguration strategyConfiguration =
+//                    new StandardShardingStrategyConfiguration("month", MonthTableShardingAlgorithm.class.getName());
+//            rule.setTableShardingStrategyConfig(strategyConfiguration);
+//            //自增列名称
+//            rule.setKeyGeneratorColumnName("id");
+            rule.setLogicTable("sys_log");
+            rule.setActualDataNodes("jww.sys_log_${0..1}");
+            // 配置分表策略
+            rule.setTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("id",MyPreciseShardingAlgorithm.class.getName()));
+            // 配置分片规则
             rule.setKeyGeneratorColumnName("id");
-            return rule;
+            ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
+            shardingRuleConfig.getTableRuleConfigs().add(rule);
+            return shardingRuleConfig;
         }
 
 

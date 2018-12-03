@@ -9,7 +9,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.rrx.kaoqins.admin.dao.SysDict2Mapper;
 import com.rrx.kaoqins.admin.dao.SysDictMapper;
+import com.rrx.kaoqins.admin.dao.SysLogMapper;
 import com.rrx.kaoqins.admin.model.SysDict;
+import com.rrx.kaoqins.admin.model.SysLog;
 import com.rrx.kaoqins.admin.param.DictParam;
 import com.rrx.kaoqins.core.global.Const;
 import com.rrx.kaoqins.core.global.GeneRedisKey;
@@ -134,6 +136,22 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
     }
 
 
+    @Autowired
+    SysLogMapper sysLogMapper;
 
+    /*
+     * 分表查询
+     */
+    public SysLog getLog(Serializable id) {
+        return sysLogMapper.selectById(id);
+    }
+
+    /*
+     * 分表插入
+     */
+    @Transactional
+    public void saveLog(SysLog sysLog) {
+        sysLogMapper.insert(sysLog);
+    }
 
 }
