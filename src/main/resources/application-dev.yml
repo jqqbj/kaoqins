@@ -20,12 +20,12 @@ spring:
           username: ENC(9rNHpsWlZ+r2l6oHdlwh0A==)
           password:
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/jww
+          url: jdbc:mysql://127.0.0.1:3306/jww
         jww2:
           username: root
           password:
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/jww2
+          url: jdbc:mysql://127.0.0.1:3306/jww2
   redis:
     host: 127.0.0.1
     port: 6379
@@ -60,6 +60,26 @@ curator:
     retryCount: 5  #重试次数
     sessionTimeoutMs: 60000 # session超时时间
 
+elastic:
+      job:
+        zk:
+            namespace: kaoqin_job1
+            serverLists: 127.0.0.1:2181
+        MySimpleJob:
+            cron: 0/2 * * * * ?
+            description: simple job
+            disabled: false
+            failover: true
+            #jobExceptionHandler: com.rrx.kaoqins.core.config.elasticjob.CustomJobExceptionHandler
+            jobParameter: test
+            #listener: com.rrx.kaoqins.core.config.elasticjob.MessageElasticJobListener
+            misfire: true
+            monitorExecution: false
+            overwrite: true
+            shardingTotalCount: 3
+            shardingItemParameters: 0=A,1=B,2=C
+
+# debug: true
 #sharding:
 #    jdbc:
 #        data-sources:

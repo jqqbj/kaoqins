@@ -8,7 +8,6 @@ import com.google.common.collect.Maps;
 import io.shardingjdbc.core.api.ShardingDataSourceFactory;
 import io.shardingjdbc.core.api.config.ShardingRuleConfiguration;
 import io.shardingjdbc.core.api.config.TableRuleConfiguration;
-import io.shardingjdbc.core.api.config.strategy.InlineShardingStrategyConfiguration;
 import io.shardingjdbc.core.api.config.strategy.StandardShardingStrategyConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,15 +65,6 @@ public class ShardingJdbcConfig implements DynamicDataSourceProvider {
          */
         private ShardingRuleConfiguration getOrderTableRuleConfiguration() {
             TableRuleConfiguration rule = new TableRuleConfiguration();
-//            rule.setLogicTable("t_order");
-//            rule.setActualDataNodes(
-//                    "t_order_0, t_order_1");
-//            // 表分片策略
-//            StandardShardingStrategyConfiguration strategyConfiguration =
-//                    new StandardShardingStrategyConfiguration("month", MonthTableShardingAlgorithm.class.getName());
-//            rule.setTableShardingStrategyConfig(strategyConfiguration);
-//            //自增列名称
-//            rule.setKeyGeneratorColumnName("id");
             rule.setLogicTable("sys_log");
             rule.setActualDataNodes("jww.sys_log_${0..1}");
             // 配置分表策略
@@ -85,6 +75,5 @@ public class ShardingJdbcConfig implements DynamicDataSourceProvider {
             shardingRuleConfig.getTableRuleConfigs().add(rule);
             return shardingRuleConfig;
         }
-
 
     }

@@ -24,6 +24,13 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- spring boot -->
         <dependency>
@@ -130,12 +137,12 @@
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>2.12.0</version>
+            <version>2.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
-            <version>2.12.0</version>
+            <version>2.10.0</version>
         </dependency>
         <!--sharding jdbc  -->
         <dependency>
@@ -143,6 +150,14 @@
             <artifactId>sharding-jdbc-core</artifactId>
             <version>2.0.3</version>
         </dependency>
+
+        <!--elastic job ElasticJobAutoConfiguration自动配置类作用 -->
+        <dependency>
+            <groupId>com.github.yinjihuan</groupId>
+            <artifactId>elastic-job-spring-boot-starter</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
 
     </dependencies>
 
