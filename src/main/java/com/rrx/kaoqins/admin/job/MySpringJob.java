@@ -1,16 +1,12 @@
 package com.rrx.kaoqins.admin.job;
 
-import cn.hutool.core.date.DateUtil;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.service.SysDictService;
 import com.rrx.kaoqins.core.config.zk.DistributedLockByCurator;
-import com.rrx.kaoqins.core.web.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 /**
  * @Author JQQ

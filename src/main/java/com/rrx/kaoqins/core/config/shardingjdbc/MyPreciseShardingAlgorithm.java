@@ -10,10 +10,10 @@ import java.util.Collection;
  * @Author JQQ
  */
 @Slf4j
-public class MyPreciseShardingAlgorithm implements PreciseShardingAlgorithm<String> {
+public class MyPreciseShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
     @Override
-    public String doSharding(Collection<String> collection, PreciseShardingValue<String> preciseShardingValue) {
-        String value = preciseShardingValue.getValue();
+    public String doSharding(Collection<String> collection, PreciseShardingValue<Integer> preciseShardingValue) {
+        Integer value = preciseShardingValue.getValue();
         for (String name : collection) {
             if (name.endsWith(Integer.valueOf(value) % collection.size() + "")) {
                 log.info("return table_name:"+name);

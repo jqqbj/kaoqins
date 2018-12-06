@@ -94,11 +94,11 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.1</version>
         </dependency>
-        <!-- hutool工具包 -->
+        <!-- hutool工具包-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>4.1.12</version>
+            <version>4.1.19</version>
         </dependency>
         <!--Lettuce连接池 -->
         <dependency>
