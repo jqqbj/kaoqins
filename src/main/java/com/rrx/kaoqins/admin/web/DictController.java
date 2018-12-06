@@ -9,7 +9,6 @@ import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.model.SysLog;
 import com.rrx.kaoqins.admin.param.DictParam;
 import com.rrx.kaoqins.admin.service.SysDictService;
-import com.rrx.kaoqins.core.config.zk.DistributedLockByCurator;
 import com.rrx.kaoqins.core.web.model.ResultModel;
 import com.rrx.kaoqins.core.web.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -112,32 +111,6 @@ public class DictController {
     public ResultModel session(HttpSession session){
         session.setAttribute("loginname",UUID.randomUUID());
         return ResultUtil.ok(session.getId());
-    }
-
-    /*
-     * ZK分布式锁 ，也可以采用Redis锁，RedisHelper.lock，
-     * 使用场景，如：多台机器执行定时任务，争抢资源
-     */
-    @Autowired
-    DistributedLockByCurator distributedLockByCurator;
-
-    String path ="SYNC_KAOQIN_DB";
-
-    @GetMapping("/acquireLock")
-    public ResultModel acquireLock(){
-        log.debug("start-ZK'{}'目录是否存在{}",path,distributedLockByCurator.checkLock(path));
-        //ZK多个客户端，同时只可能成功锁住一个
-        distributedLockByCurator.acquireLockIsWait(path);
-        //log.debug("创建锁{}",distributedLockByCurator.acquireLock(path));
-        log.debug("end-ZK'{}'目录是否存在{}",path,distributedLockByCurator.checkLock(path));
-        return ResultUtil.ok();
-    }
-
-    @GetMapping("/releaseLock")
-    public ResultModel releaseLock(){
-        log.debug("删除锁{}",distributedLockByCurator.releaseLock(path));
-        log.debug("del-ZK'{}'目录是否存在{}",path,distributedLockByCurator.checkLock(path));
-        return ResultUtil.ok();
     }
 
     //-----------------------------sharding jdbc -------------------------

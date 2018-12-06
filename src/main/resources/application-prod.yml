@@ -66,7 +66,7 @@ elastic:
             namespace: kaoqin_job1
             serverLists: 100.66.172.251:2181
         MySimpleJob:
-            cron: 0/2 * * * * ?
+            cron: 0/5 * * * * ?
             description: simple job
             disabled: false
             failover: true
@@ -76,8 +76,8 @@ elastic:
             misfire: true
             monitorExecution: false
             overwrite: true
-            shardingTotalCount: 3
-            shardingItemParameters: 0=A,1=B,2=C
+            shardingTotalCount: 2
+            shardingItemParameters: 0=A,1=B
 
 # debug: true
 #sharding:
