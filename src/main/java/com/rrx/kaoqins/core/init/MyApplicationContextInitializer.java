@@ -13,6 +13,8 @@ public class MyApplicationContextInitializer implements ApplicationContextInitia
     public void initialize(ConfigurableApplicationContext applicationContext) {
         //设置环境变量
         System.setProperty("jssyptpwd","jiqq");
+        //解决ES报错
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
     }
 
 }

@@ -1,9 +1,5 @@
 package com.rrx.kaoqins.core.util;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
 /**
  * @Author JQQ
  * @Date 2018/12/3 16:22
@@ -19,6 +15,8 @@ public class TestMain {
 //        }  finally {
 //            System.out.println("finally");
 //        }
+        boolean isAdmin = "Administrator".equals("MBR_ADMIN4")||"MBR_ADMIN".equals("MBR_ADMIN4")?true:false;
+        System.out.println(isAdmin);
     }
 
 

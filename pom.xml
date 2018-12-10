@@ -64,10 +64,21 @@
             <!--<groupId>org.springframework.session</groupId>-->
             <!--<artifactId>spring-session-data-redis</artifactId>-->
         <!--</dependency>-->
-
+        <!-- Springboot默认采用RabbitMQ为消息中间件 -->
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
         <!--<artifactId>spring-boot-starter-amqp</artifactId>-->
+        <!--</dependency>-->
+        <!--SpringBoot默认使用SpringData ElasticSearch-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+        <!-- 也可以使用，jest通过REST方式操作ES -->
+        <!--<dependency>-->
+            <!--<groupId>io.searchbox</groupId>-->
+            <!--<artifactId>jest</artifactId>-->
+            <!--<version>5.3.3</version>-->
         <!--</dependency>-->
 
         <!--热部署 -->
