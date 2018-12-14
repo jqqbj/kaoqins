@@ -7,8 +7,12 @@ import org.springframework.data.elasticsearch.annotations.Document;
 public class Article {
 
     private Integer id;
+
     private String author;
+
+    //@Field(searchAnalyzer="ik_max_word",analyzer = "ik_max_word")
     private String title;
+
     private String content;
 
     public Integer getId() {
