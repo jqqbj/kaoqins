@@ -7,7 +7,11 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.annotation.Order;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,6 +24,9 @@ import org.springframework.stereotype.Component;
 @Order(0)
 public class LogAspect {
 
+    @Autowired
+    LogService logService;
+
     @Pointcut("@annotation(com.rrx.kaoqins.core.log.Log)")
     public void pointCut() {
     }
@@ -30,7 +37,7 @@ public class LogAspect {
         Log log2 = signature.getMethod().getAnnotation(Log.class);
         //LocalVariableTableParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
         //String[] parameterNames = discoverer.getParameterNames(signature.getMethod());
-        log.debug("拦截日志:{}", log2.value());
+        logService.saveLog(log2);
         try {
             return pjp.proceed();
         } catch (BusinessException e) {

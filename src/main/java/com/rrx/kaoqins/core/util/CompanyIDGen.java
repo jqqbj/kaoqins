@@ -1,7 +1,6 @@
 package com.rrx.kaoqins.core.util;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;

@@ -70,7 +70,7 @@ elastic:
             namespace: kaoqin_job1
             serverLists: 127.0.0.1:2181
         MySimpleJob:
-            cron: 0/5 * * * * ?
+            cron: 0 0 * * * ? *
             description: simple job
             disabled: false
             failover: true
