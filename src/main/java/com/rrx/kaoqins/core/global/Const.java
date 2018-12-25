@@ -1,27 +1,14 @@
 package com.rrx.kaoqins.core.global;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import cn.hutool.core.lang.Dict;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 系统通用常量
  */
 public final class Const {
-
-    public static List<String> weakliest = Collections.synchronizedList(new ArrayList<String>());
-
-    public static ConcurrentHashMap map = new ConcurrentHashMap();
-
-    static {
-        weakliest.add("星期一");
-        weakliest.add("星期二");
-        weakliest.add("星期三");
-        weakliest.add("星期四");
-        weakliest.add("星期五");
-        weakliest.add("星期六");
-        weakliest.add("星期日");
-    }
-
 
     /**
      * 当前用户
@@ -31,23 +18,30 @@ public final class Const {
      * 当前用户
      */
     public static final String CURRENT_USER_ID = "CURRENT_USER_ID";
-
     /**
      * 缓存键值
      */
     public static final Map<Class<?>, String> CACHE_KEY_MAP = new HashMap<>(5);
-
     /**
      * 缓存命名空间前缀
      */
     public static final String CACHE_NAMESPACE_PREFIX = "rrx:";
+//    public static List<String> weakliest = Collections.synchronizedList(new ArrayList<String>());
+//    public static ConcurrentHashMap map = new ConcurrentHashMap();
+//    static {
+//        weakliest.add("星期一");
+//        weakliest.add("星期二");
+//    }
 
-    /**
-     * 模块缓存名
-     */
-    public class CacheName {
-        public static final String DICT = "dict";
-        public static final String PARAM = "param";
+    public static Map<String, Object> getWeek() {
+        return Dict.create()
+                .set("1", "星期一")
+                .set("2", "星期二")
+                .set("3", "星期三")
+                .set("4", "星期四")
+                .set("5", "星期五")
+                .set("6", "星期六")
+                .set("7", "星期日");
     }
 
     /**
@@ -137,6 +131,14 @@ public final class Const {
             return this.message;
         }
 
+    }
+
+    /**
+     * 模块缓存名
+     */
+    public class CacheName {
+        public static final String DICT = "dict";
+        public static final String PARAM = "param";
     }
 
 }
