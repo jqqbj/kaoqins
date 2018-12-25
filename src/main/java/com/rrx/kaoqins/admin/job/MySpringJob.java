@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author JQQ
- * @Date 2018/11/27 15:58
  */
-
 @Slf4j
 @Component
 public class MySpringJob {
