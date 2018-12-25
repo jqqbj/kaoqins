@@ -3,7 +3,11 @@ package com.rrx.kaoqins;
 import com.rrx.kaoqins.admin.dao.SysDictMapper;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.service.SysDictService;
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.jasypt.encryption.StringEncryptor;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +56,18 @@ public class MybatisTest {
     }
 
 
+    //引入 ContiPerf 进行性能测试
+    @Rule
+    public ContiPerfRule contiPerfRule = new ContiPerfRule();
 
+
+    @Test
+    //@Required(max = 1200, average = 250, totalTime = 60000)
+    @PerfTest(invocations = 50,threads = 5)  //5个线程 执行50次
+    public void testMultiThread() {
+        String msg = "this is a test";
+        List<SysDict> userList = sysDictMapper.selectList(null);
+        System.out.println("线程："+Thread.currentThread().getName()+"，size："+userList.size());
+    }
 
 }
