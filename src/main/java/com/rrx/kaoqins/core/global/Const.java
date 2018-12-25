@@ -1,12 +1,27 @@
 package com.rrx.kaoqins.core.global;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 系统通用常量
  */
 public final class Const {
+
+    public static List<String> weakliest = Collections.synchronizedList(new ArrayList<String>());
+
+    public static ConcurrentHashMap map = new ConcurrentHashMap();
+
+    static {
+        weakliest.add("星期一");
+        weakliest.add("星期二");
+        weakliest.add("星期三");
+        weakliest.add("星期四");
+        weakliest.add("星期五");
+        weakliest.add("星期六");
+        weakliest.add("星期日");
+    }
+
 
     /**
      * 当前用户
