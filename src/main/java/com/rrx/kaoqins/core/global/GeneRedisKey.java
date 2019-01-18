@@ -8,9 +8,9 @@ import java.io.Serializable;
  */
 public class GeneRedisKey {
 
-
     public static String getSysDictKey(Serializable id){
-        return Const.CACHE_NAMESPACE_PREFIX+"kaoqin:sysdict:"+id;
+        return Const.CACHE_NAMESPACE_PREFIX+"kaoqin:sysdict:"+id; //rrx:kaoqin:sysdict:1
     }
 
 }
+

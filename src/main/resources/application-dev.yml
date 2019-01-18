@@ -27,8 +27,8 @@ spring:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/jww2
   redis:
-    host: 127.0.0.1
-    port: 6379
+    host: 100.66.7.244
+    port: 9100
     database: 0
     lettuce:
       pool:
@@ -39,6 +39,11 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 127.0.0.1:9300
+#  ldap:
+#    urls: ldap://localhost:389
+#    base: dc=didispace,dc=com
+#    username: root
+#    password: root
 
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml
@@ -83,7 +88,16 @@ elastic:
             shardingTotalCount: 2
             shardingItemParameters: 0=A,1=B
 
-
+dubbo:
+  application:
+    name: my-dubbo
+  registry:
+    address: zookeeper://100.66.174.251:2181
+  protocol:
+    name: dubbo
+    port: 20881
+  monitor:
+    protocol: registry
 
 # debug: true
 #sharding:

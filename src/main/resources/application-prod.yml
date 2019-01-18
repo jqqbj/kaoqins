@@ -60,6 +60,7 @@ curator:
     retryCount: 5  #重试次数
     sessionTimeoutMs: 60000 # session超时时间
 
+
 elastic:
       job:
         zk:
@@ -78,6 +79,7 @@ elastic:
             overwrite: true
             shardingTotalCount: 2
             shardingItemParameters: 0=A,1=B
+
 
 # debug: true
 #sharding:

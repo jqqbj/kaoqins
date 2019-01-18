@@ -25,9 +25,10 @@ public class SysLoginInterceptor extends HandlerInterceptorAdapter {
         log.debug("getServletPath:" + request.getServletPath());
         log.debug("getRequestURI:" + request.getRequestURI());
         log.debug("getRequestURL:" + request.getRequestURL());
-        if(StrUtil.isBlank(request.getParameter("token"))){
+        if(StrUtil.isBlank(request.getParameter
+                ("token"))){
             log.error("登录失败");
-            //throw new LoginException("登录失败");
+           // throw new LoginException("登录失败");
         }
         return true;
     }

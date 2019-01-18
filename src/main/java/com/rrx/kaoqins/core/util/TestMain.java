@@ -1,5 +1,7 @@
 package com.rrx.kaoqins.core.util;
 
+import cn.hutool.core.thread.ThreadUtil;
+
 /**
  * @Author JQQ
  * @Date 2018/12/3 16:22
@@ -17,7 +19,13 @@ public class TestMain {
 //        }
         boolean isAdmin = "Administrator".equals("MBR_ADMIN4")||"MBR_ADMIN".equals("MBR_ADMIN4")?true:false;
         System.out.println(isAdmin);
+
+//        ThreadUtil.createThreadLocal(true).
+
     }
+
+
+
 
 
 }
