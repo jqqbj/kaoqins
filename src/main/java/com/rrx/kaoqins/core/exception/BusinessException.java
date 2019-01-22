@@ -1,7 +1,7 @@
 package com.rrx.kaoqins.core.exception;
 
 
-import com.rrx.kaoqins.core.global.Const;
+import com.rrx.kaoqins.core.enums.ResultCodeEnum;
 
 /**
  * 业务异常类
@@ -25,7 +25,7 @@ public class BusinessException extends BaseException {
     }
 
     @Override
-    public Const.ResultCodeEnum getCode() {
-        return Const.ResultCodeEnum.INTERNAL_SERVER_ERROR;
+    public ResultCodeEnum getCode() {
+        return ResultCodeEnum.INTERNAL_SERVER_ERROR;
     }
 }

@@ -1,5 +1,8 @@
 package com.rrx.kaoqins.core.global;
 
+
+import com.rrx.kaoqins.core.constant.CacheConsts;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +12,7 @@ import java.io.Serializable;
 public class GeneRedisKey {
 
     public static String getSysDictKey(Serializable id){
-        return Const.CACHE_NAMESPACE_PREFIX+"kaoqin:sysdict:"+id; //rrx:kaoqin:sysdict:1
+        return CacheConsts.CACHE_NAMESPACE_PREFIX +"kaoqin:sysdict:"+id; //rrx:kaoqin:sysdict:1
     }
 
 }

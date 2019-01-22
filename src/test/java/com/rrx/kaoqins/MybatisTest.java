@@ -4,7 +4,6 @@ import com.rrx.kaoqins.admin.dao.SysDictMapper;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.service.SysDictService;
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Rule;

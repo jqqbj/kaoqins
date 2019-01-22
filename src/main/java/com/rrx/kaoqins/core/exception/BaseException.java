@@ -1,7 +1,7 @@
 package com.rrx.kaoqins.core.exception;
 
 
-import com.rrx.kaoqins.core.global.Const;
+import com.rrx.kaoqins.core.enums.ResultCodeEnum;
 
 /**
  * 统一异常基类
@@ -30,6 +30,6 @@ public abstract class BaseException extends RuntimeException {
      * @author wanyong
      * @date 2017/11/10 09:38
      */
-    public abstract Const.ResultCodeEnum getCode();
+    public abstract ResultCodeEnum getCode();
 
 }

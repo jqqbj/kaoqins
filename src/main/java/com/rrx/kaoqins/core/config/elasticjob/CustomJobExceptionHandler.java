@@ -1,9 +1,8 @@
 package com.rrx.kaoqins.core.config.elasticjob;
 
+import com.dangdang.ddframe.job.executor.handler.JobExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.dangdang.ddframe.job.executor.handler.JobExceptionHandler;
 
 /**
  * 自定义异常处理

@@ -1,7 +1,5 @@
 package com.rrx.kaoqins.core.util;
 
-import cn.hutool.core.thread.ThreadUtil;
-
 /**
  * @Author JQQ
  * @Date 2018/12/3 16:22

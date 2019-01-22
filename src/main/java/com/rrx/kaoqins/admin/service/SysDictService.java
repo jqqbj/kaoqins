@@ -13,7 +13,7 @@ import com.rrx.kaoqins.admin.dao.SysLogMapper;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.model.SysLog;
 import com.rrx.kaoqins.admin.param.DictParam;
-import com.rrx.kaoqins.core.global.Const;
+import com.rrx.kaoqins.core.constant.CacheConsts;
 import com.rrx.kaoqins.core.global.GeneRedisKey;
 import com.rrx.kaoqins.core.log.Log;
 import com.rrx.kaoqins.core.util.RedisHelper;
@@ -32,7 +32,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-@CacheConfig(cacheNames = Const.CacheName.DICT)
+@CacheConfig(cacheNames = CacheConsts.CACHE_DICT)
 public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
 
     @Autowired

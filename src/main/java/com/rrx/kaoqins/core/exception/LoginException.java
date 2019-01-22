@@ -1,7 +1,7 @@
 package com.rrx.kaoqins.core.exception;
 
 
-import com.rrx.kaoqins.core.global.Const;
+import com.rrx.kaoqins.core.enums.ResultCodeEnum;
 
 /**
  * 登录异常类
@@ -25,7 +25,7 @@ public class LoginException extends BaseException {
     }
 
     @Override
-    public Const.ResultCodeEnum getCode() {
-        return Const.ResultCodeEnum.LOGIN_FAIL;
+    public ResultCodeEnum getCode() {
+        return ResultCodeEnum.LOGIN_FAIL;
     }
 }
