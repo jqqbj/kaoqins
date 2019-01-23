@@ -5,6 +5,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.rrx.kaoqins.admin.dto.SysDictDto;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.model.SysLog;
