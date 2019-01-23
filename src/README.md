@@ -15,5 +15,20 @@ https://github.com/ctripcorp/apollo/blob/master/README.md
 
 7、dubbo集成
 
+   分包处理
+   fm-posting
+     fm-sys
+        fm-sys-api
+        fm-sys-server
+        fm-sys-web
+     fm-posting
+        fm-posting-api
+        fm-posting-server
+        fm-posting-web
+     yc-core
+        
+     
+      
+
 8、事务补偿
 

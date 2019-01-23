@@ -4,10 +4,12 @@ package com.rrx.kaoqins.admin.web;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.rrx.kaoqins.admin.dto.SysDictDto;
 import com.rrx.kaoqins.admin.model.SysDict;
 import com.rrx.kaoqins.admin.model.SysLog;
 import com.rrx.kaoqins.admin.param.DictParam;
+import com.rrx.kaoqins.admin.service.IProviderService;
 import com.rrx.kaoqins.admin.service.SysDictService;
 import com.rrx.kaoqins.core.web.model.ResultModel;
 import com.rrx.kaoqins.core.web.util.ResultUtil;
@@ -135,5 +137,22 @@ public class DictController {
     /**
      * 资源监控
      */
+
+    /**
+     * 调用Dubbo服务端
+     */
+    @Autowired
+    private IProviderService providerService2;
+
+    @GetMapping("/say")
+    @HystrixCommand(fallbackMethod = "reliable")
+    public String doSayHello(String name) {
+        return providerService2.sayHello(name);
+    }
+
+    public String reliable(String name) {
+        return "hystrix fallback value";
+    }
+
 
 }

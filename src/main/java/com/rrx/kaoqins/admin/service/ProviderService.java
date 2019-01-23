@@ -11,8 +11,8 @@ public class ProviderService implements IProviderService {
 
     //@Reference()
     @HystrixCommand
-    public String testDubbo() {
-        return "测试DUBBO";
+    public String sayHello(String msg) {
+        return msg;
     }
 
 }
