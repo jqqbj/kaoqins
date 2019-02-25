@@ -50,6 +50,7 @@ public final class RedisHelper {
 
 
     public void set(String key, Serializable value, int seconds) {
+        //redisTemplate.opsForValue().increment(key,4);
         redisTemplate.boundValueOps(key).set(value);
         expire(key, seconds);
     }

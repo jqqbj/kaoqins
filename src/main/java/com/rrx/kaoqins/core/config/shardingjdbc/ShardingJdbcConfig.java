@@ -1,5 +1,7 @@
 package com.rrx.kaoqins.core.config.shardingjdbc;
 
+import com.atomikos.icatch.jta.UserTransactionImp;
+import com.atomikos.icatch.jta.UserTransactionManager;
 import com.baomidou.dynamic.datasource.DynamicDataSourceCreator;
 import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
@@ -11,9 +13,13 @@ import io.shardingjdbc.core.api.config.TableRuleConfiguration;
 import io.shardingjdbc.core.api.config.strategy.StandardShardingStrategyConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.jta.JtaTransactionManager;
 
 import javax.sql.DataSource;
+import javax.transaction.UserTransaction;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,6 +46,20 @@ public class ShardingJdbcConfig implements DynamicDataSourceProvider {
                 Map.Entry<String, DataSourceProperty> item = (Map.Entry)var3.next();
                 String pollName = (String)item.getKey();
                 DataSourceProperty dataSourceProperty = (DataSourceProperty)item.getValue();
+                //--------
+//                AtomikosDataSourceBean ds = new AtomikosDataSourceBean();
+//                ds.setXaDataSourceClassName("com.alibaba.druid.pool.xa.DruidXADataSource");
+//                ds.setUniqueResourceName(pollName);
+//                ds.setPoolSize(5);
+//
+//                Properties prop = new Properties();
+//                prop.put("url", dataSourceProperty.getUrl());
+//                prop.put("username", dataSourceProperty.getUsername());
+//                prop.put("password", dataSourceProperty.getPassword());
+//                prop.put("driverClassName", dataSourceProperty.getDriverClassName());
+//                ds.setXaProperties(prop);
+
+                //--------
                 dataSourceProperty.setPollName(pollName);
                 //对JWW数据库采用sharingjdbc驱动
                 if(pollName.equals("jww")){

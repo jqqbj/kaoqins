@@ -2,7 +2,7 @@ package com.rrx.kaoqins.core.config;
 
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class DruidConfig {
 
     //配置Druid的监控

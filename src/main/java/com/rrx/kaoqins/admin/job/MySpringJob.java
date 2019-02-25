@@ -22,7 +22,7 @@ public class MySpringJob {
     String path ="SYNC_KAOQIN_DB";
 
     //每分钟启动
-    @Scheduled(cron = "0/30 * * * * ?")
+    @Scheduled(cron = "0 1 * * * ?")
     public void timerToNow() {
         try {
             /*

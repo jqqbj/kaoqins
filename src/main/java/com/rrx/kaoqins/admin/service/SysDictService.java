@@ -78,11 +78,18 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
         allDict2.forEach(System.out::println);
     }
 
-    @Transactional
+
+    /*
+      添加Transactional注解，无法实现切换数据库源，切换数据源与事务二选一，或采用分布式事务处理
+      如果您只是几个数据库但是有强烈的需求分布式事物，建议还是使用传统方式自己构建多套环境集成atomic这类
+     */
+    //@Transactional
     public boolean save(SysDict dict) {
-        super.save(dict);
+        sysDictMapper.insert(dict);
+        sysDict2Mapper.insert(dict);
         return true;
     }
+
 
     @CacheEvict(key = "#p0.id")
     @Transactional

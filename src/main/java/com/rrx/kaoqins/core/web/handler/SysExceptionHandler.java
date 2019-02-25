@@ -6,12 +6,18 @@ import com.rrx.kaoqins.core.exception.BusinessException;
 import com.rrx.kaoqins.core.web.model.ResultModel;
 import com.rrx.kaoqins.core.web.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
+import java.util.List;
 
 /**
  * 异常处理器
@@ -36,10 +42,19 @@ public class SysExceptionHandler {
             return ResultUtil.fail(ResultCodeEnum.NO_SUPPORTED_METHOMD);
         }
         // springboot参数验证框架如果验证失败则抛出MethodArgumentNotValidException异常
-        if (e instanceof MethodArgumentNotValidException
+        if(e instanceof MethodArgumentNotValidException
                 ||e instanceof MethodArgumentTypeMismatchException
                 ||e instanceof IllegalArgumentException) {
             return ResultUtil.fail(ResultCodeEnum.BAD_REQUEST, e.getMessage());
+        }
+        if(e instanceof BindException ){
+            List<ObjectError> errors = ((BindException) e).getAllErrors();
+            StringBuilder sb = new StringBuilder();
+            errors.forEach(p ->{
+                FieldError fieldError = (FieldError) p;
+                sb.append(fieldError.getDefaultMessage()+"<br/>");
+            });
+            return ResultUtil.fail(ResultCodeEnum.BAD_REQUEST, sb.toString());
         }
         if (e instanceof BaseException) {
             BaseException baseException = (BaseException) e;
@@ -51,4 +66,7 @@ public class SysExceptionHandler {
         }
         return ResultUtil.fail(ResultCodeEnum.INTERNAL_SERVER_ERROR);
     }
+
+
+
 }

@@ -1,5 +1,5 @@
 server:
-  port: 8072
+  port: 8070
 
 spring:
   datasource:
@@ -8,6 +8,7 @@ spring:
         loginUsername: admin
         loginPassword: 123456
     dynamic:
+      force-master: false
       druid:
         initial-size: 5
         max-active: 20
@@ -39,6 +40,8 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 127.0.0.1:9300
+  jta:
+    transaction-manager-id: txManager
 #  ldap:
 #    urls: ldap://localhost:389
 #    base: dc=didispace,dc=com

@@ -26,9 +26,8 @@ https://github.com/ctripcorp/apollo/blob/master/README.md
         fm-posting-server
         fm-posting-web
      yc-core
-        
-     
-      
 
 8、事务补偿
+
+9、整合swagger,支持全部导入postman
 
