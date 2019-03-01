@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,6 +44,9 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
 
     @Autowired
     SysDict2Mapper sysDict2Mapper;
+
+    @Autowired
+    SysLogService sysLogService;
 
     @Cacheable(key = "#p0")
     public SysDict getById(Serializable id) {
@@ -87,6 +91,8 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
     public boolean save(SysDict dict) {
         sysDictMapper.insert(dict);
         sysDict2Mapper.insert(dict);
+        //保存日志SQL
+        sysLogService.save();
         return true;
     }
 
