@@ -28,12 +28,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @Slf4j
 @Service
-@CacheConfig(cacheNames = CacheConsts.CACHE_DICT)
+//@Cacheable(cacheNames = CacheConsts.CACHE_DICT) //如果方法指定key,方法中需要重新写cacheNames
 public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
 
     @Autowired
@@ -48,14 +49,14 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
     @Autowired
     SysLogService sysLogService;
 
-    @Cacheable(key = "#p0")
+    @Cacheable(cacheNames = CacheConsts.CACHE_DICT,key = "#p0")
     public SysDict getById(Serializable id) {
         return super.getById(id);
     }
 
     //AR方式
     public SysDict getById2(Serializable id) {
-        SysDict dict = new  SysDict();
+        SysDict dict = new SysDict();
         dict.setId((Long)id);
         return dict.selectById();
     }
@@ -69,9 +70,18 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
                new QueryWrapper<SysDict>().eq("code",dictParam.getCode()));
     }
 
+
     public List<SysDict> list(DictParam dictParam) {
         return super.list(new QueryWrapper<SysDict>().eq("code",dictParam.getCode()));
     }
+
+    @Cacheable(cacheNames = CacheConsts.CACHE_DICTLIST) //,key = "method.name
+    public List<SysDict> listCache() {
+        return Arrays.asList(new SysDict("1","男"),new SysDict("2","女"));
+    }
+
+    @CacheEvict(cacheNames = CacheConsts.CACHE_DICTLIST,allEntries=true)
+    public void clearCache() {}
 
     public void mdb(){
         log.debug("=========切换数据库1==============");

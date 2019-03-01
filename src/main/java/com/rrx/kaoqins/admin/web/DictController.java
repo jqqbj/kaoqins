@@ -59,8 +59,16 @@ public class DictController {
      */
     @PostMapping("/list")
     public ResultModel list(DictParam param) {
-        List<SysDict> list = sysDictService.list(param);
+        //List<SysDict> list = sysDictService.list(param);
+        List<SysDict> list = sysDictService.listCache();
         return ResultUtil.ok(SysDictDto.model2dto(list));
+    }
+
+
+    @GetMapping("/clear")
+    public ResultModel clear() {
+        sysDictService.clearCache();
+        return ResultUtil.ok();
     }
 
     /**

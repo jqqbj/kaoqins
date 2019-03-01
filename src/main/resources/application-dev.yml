@@ -31,8 +31,8 @@ spring:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/jww2
   redis:
-    host: 100.66.7.244
-    port: 9100
+    host: 100.66.174.251
+    port: 6379
     database: 0
     lettuce:
       pool:

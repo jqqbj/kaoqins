@@ -12,6 +12,7 @@ public class CacheConsts {
      * 缓存命名空间前缀
      */
     public static final String CACHE_NAMESPACE_PREFIX = "rrx:";
-    public static final String CACHE_DICT = "dict";
-    public static final String CACHE_PARAM = "param";
+    public static final String CACHE_DICT = CACHE_NAMESPACE_PREFIX+"dict";
+    public static final String CACHE_DICTLIST = CACHE_NAMESPACE_PREFIX+"dictlist";
+    //public static final String CACHE_PARAM = "param";
 }

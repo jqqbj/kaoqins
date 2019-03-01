@@ -13,6 +13,14 @@ import lombok.Data;
 @TableName("sys_dict")
 public class  SysDict extends BaseModel<SysDict> {
 
+    public SysDict() {
+    }
+
+    public SysDict(String code, String codeText) {
+        this.code = code;
+        this.codeText = codeText;
+    }
+
     /**
      * 类型
      */

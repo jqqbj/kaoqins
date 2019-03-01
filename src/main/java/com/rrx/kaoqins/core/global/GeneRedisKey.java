@@ -15,5 +15,7 @@ public class GeneRedisKey {
         return CacheConsts.CACHE_NAMESPACE_PREFIX +"kaoqin:sysdict:"+id; //rrx:kaoqin:sysdict:1
     }
 
+
+
 }
 
