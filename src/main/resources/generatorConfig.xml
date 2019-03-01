@@ -14,7 +14,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://100.73.17.16:3306/finance_mbr"
+                        connectionURL="jdbc:mysql://localhost:3306/jww"
                         userId="root"
                         password="">
             <!--<property name="useInformationSchema" value="true"></property>-->
