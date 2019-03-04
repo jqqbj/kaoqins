@@ -3,6 +3,8 @@ package com.rrx.kaoqins.admin.web;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
+import cn.hutool.poi.excel.ExcelReader;
+import cn.hutool.poi.excel.ExcelUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.rrx.kaoqins.admin.dto.SysDictDto;
@@ -16,14 +18,16 @@ import com.rrx.kaoqins.core.web.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @RestController
@@ -199,6 +203,31 @@ public class DictController {
             put("age", "20");
         }};
 
+    }
+
+
+    @RequestMapping("/upload")
+    public ResultModel fileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+        if(file==null){
+            return ResultUtil.fail(-1,"文件为空");
+        }
+        ExcelReader reader = ExcelUtil.getReader(file.getInputStream(),0);
+        List<List<Object>> readAll = reader.read();
+//        readAll.forEach({
+//                e->{e.forEach(
+//                        t-> System.out.println(e+" "+t))
+//        });
+        AtomicInteger a = new AtomicInteger(0);
+        readAll.forEach(e->{
+            a.getAndIncrement();
+            if(a.intValue()==1){
+                return;
+            }
+            e.forEach(t->{
+                System.out.println(a+" "+t);
+            });
+        });
+        return ResultUtil.ok(readAll);
     }
 
 }

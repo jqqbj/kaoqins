@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,7 +81,9 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
         return Arrays.asList(new SysDict("1","男"),new SysDict("2","女"));
     }
 
-    @CacheEvict(cacheNames = CacheConsts.CACHE_DICTLIST,allEntries=true)
+//  @CacheEvict(cacheNames = CacheConsts.CACHE_DICTLIST,allEntries=true)
+    @Caching(evict = {@CacheEvict(cacheNames = CacheConsts.CACHE_DICTLIST,allEntries=true),
+                      @CacheEvict(cacheNames = CacheConsts.CACHE_DICT,allEntries=true)})
     public void clearCache() {}
 
     public void mdb(){

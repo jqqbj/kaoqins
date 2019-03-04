@@ -9,10 +9,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 /*ConfigurableApplicationContext为接口中传入的参数类型，在initialize中可以通过传入的参数执行所需要的操作*/
 public class MyApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
+    private static final String SALT = "gds&a1234df3#r$^";
+
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         //设置环境变量
-        System.setProperty("jssyptpwd","jiqq");
+        System.setProperty("jssyptpwd",SALT);
         //解决ES报错
         System.setProperty("es.set.netty.runtime.available.processors", "false");
     }

@@ -21,7 +21,7 @@ spring:
       primary: jww #设置默认的数据源
       datasource:
         jww:
-          username: ENC(9rNHpsWlZ+r2l6oHdlwh0A==)
+          username: root #ENC(9rNHpsWlZ+r2l6oHdlwh0A==)
           password:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/jww
