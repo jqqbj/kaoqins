@@ -13,7 +13,7 @@ spring:
         max-active: 20
         min-idle: 5
         max-wait: 60000
-        filters: stat,wall
+        filters: wall,stat
       primary: jww #设置默认的数据源
       datasource:
         jww:

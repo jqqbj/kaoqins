@@ -13,12 +13,19 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/jww"
-                        userId="root"
-                        password="">
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://localhost:3306/jww"-->
+                        <!--userId="root"-->
+                        <!--password="">-->
+            <!--&lt;!&ndash;<property name="useInformationSchema" value="true"></property>&ndash;&gt;-->
+
+        <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                        connectionURL="jdbc:sqlserver://100.66.220.54;Database=cwbase001"
+                        userId="LC0019999"
+                        password="JDtz123456" >
             <!--<property name="useInformationSchema" value="true"></property>-->
         </jdbcConnection>
+
 
         <javaModelGenerator targetPackage="com.rrx.mbrs.entity"
                             targetProject="D:/doc/mbrs/src/main/java">
@@ -49,7 +56,22 @@
         <!--</table>-->
         <!--<table tableName="mbr_share" domainObjectName="MbrShare">-->
         <!--</table>-->
-        <table tableName="mbr_report_column" domainObjectName="MbrReportColumn">
-        </table>
+        <!--ZWPZKYYYY凭证库-->
+        <!--ZWPZFLYYYY凭证分录-->
+        <!--ZWFZYSYYYY凭证原始-->
+        <!--ZWSSKMYEYYYY科目余额-->
+        <!--ZWSSFZYEYYYY辅助余额-->
+        <!--ZWFZZXYYYY凭证专项辅助字段值-->
+        <!--LSNBBMYYYY内码编码-->
+        <!--ZWPZBHYYYY凭证编号表-->
+
+        <table tableName="ZWPZK2018" domainObjectName="ZWPZK"></table>
+        <table tableName="ZWPZFL2018" domainObjectName="ZWPZFL"></table>
+        <table tableName="ZWFZYS2018" domainObjectName="ZWFZYS"></table>
+        <table tableName="ZWSSKMYE2018" domainObjectName="ZWSSKMYE"></table>
+        <table tableName="ZWSSFZYE2018" domainObjectName="ZWSSFZYE"></table>
+        <table tableName="ZWFZZX2018" domainObjectName="ZWFZZX"></table>
+        <table tableName="LSNBBM2018" domainObjectName="LSNBBM"></table>
+        <table tableName="ZWPZBH2018" domainObjectName="ZWPZBH"></table>
     </context>
 </generatorConfiguration>

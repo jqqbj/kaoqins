@@ -19,10 +19,15 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -228,6 +233,16 @@ public class DictController {
             });
         });
         return ResultUtil.ok(readAll);
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/login")
+    public ResultModel login(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken("admin", "111111");
+        Subject subject = SecurityUtils.getSubject();
+        subject.login(usernamePasswordToken);
+        return ResultUtil.ok(subject.getSession().getId());
     }
 
 }
