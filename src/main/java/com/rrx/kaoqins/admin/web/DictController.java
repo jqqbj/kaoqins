@@ -245,4 +245,12 @@ public class DictController {
         return ResultUtil.ok(subject.getSession().getId());
     }
 
+
+    @PostMapping("/lock")
+    public ResultModel lock(String id){
+        //如果尝试获取锁超时，则返回null
+       String str = sysDictService.lock(id);
+       return ResultUtil.ok(str);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.rrx.kaoqins.admin.service;
 
 
 import cn.hutool.core.lang.Dict;
+import com.baomidou.lock.annotation.Lock4j;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -182,6 +183,18 @@ public class SysDictService extends ServiceImpl<SysDictMapper,SysDict> {
     @Transactional
     public void saveLog(SysLog sysLog) {
         sysLogMapper.insert(sysLog);
+    }
+
+
+    //支持spel，tryTimeout尝试等待时间
+    @Lock4j(keys = "#id",expire = 60000, tryTimeout = 2000)
+    public String  lock(String id) {
+        System.out.println(id);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+        }
+        return "xxxxxxx"+id;
     }
 
 }

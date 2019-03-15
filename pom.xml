@@ -249,6 +249,13 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
         </dependency>
+
+        <!--分布式锁组件,支持redis,zk等 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>lock4j-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
